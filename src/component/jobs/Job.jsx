@@ -13,7 +13,7 @@ class Job extends Component {
                 <div className="job">
                     <div className="job-preview">
                         <h6>وظیفه</h6>
-                        <h2>{this.props.name}</h2>
+                        <h3>{this.props.name}</h3>
                         <p>{`الویت انجام ${this.props.priority}`}</p>
                         <button className="btn btn-danger pill fa fa-trash btn-sm delete-btn"
                         onClick={()=>this.context.handleDeleteJob(this.props.id)} />
