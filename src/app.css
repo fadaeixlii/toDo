@@ -31,6 +31,15 @@ body {
   height: 100%;
   float: left;
 }
+.container .wrapper .app .not-have-job {
+  width: 80%;
+  height: 20%;
+  text-align: center;
+  color: black;
+  background-color: #fff;
+  padding: 3em 5em;
+  margin-top: 50%;
+}
 .list-of-jobs {
   display: flex;
   justify-content: flex-start;

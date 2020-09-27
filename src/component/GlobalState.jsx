@@ -12,7 +12,7 @@ const GlobalState = (props) => {
             { name: 'درس', startingTime: 18, endingTime: 20, priority: 4, itsDone: false, detail: 'انجام درس های لازم برای فردا', id: 4 },
         ]
     );
-    const [showJobs, setShowJobs] = useState(false);
+    // const [showJobs, setShowJobs] = useState(false);
     const [singleJobName, SetSingleJobName] = useState("");
     const [singleJobStartingTime, SetSingleJobStartingTime] = useState(0);
     const [singleJobEndingTime, SetSingleJobEndingTime] = useState(0);
