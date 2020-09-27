@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AppContex from './../../AppContex';
-
+import PropTypes from 'prop-types';
 class Job extends Component {
     state = {}
     constructor({ name, startingTime, endingTime, priority, isDone, detail ,id}) {
@@ -28,6 +28,15 @@ class Job extends Component {
             
         );
     }
+}
+Job.propTypes={
+    name:PropTypes.string,
+    startingTime:PropTypes.number,
+    endingTime:PropTypes.number,
+    priority:PropTypes.number,
+    isDone:PropTypes.bool,
+    detail:PropTypes.string,
+    id:PropTypes.number
 }
 
 export default Job;

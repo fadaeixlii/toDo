@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import AppContex from '../AppContex';
 import {toast} from "react-toastify";
-
+import { v4 as uuidv4 } from 'uuid'
 const GlobalState = (props) => {
 
     const [jobs, setjobs] = useState(
@@ -48,7 +48,7 @@ const GlobalState = (props) => {
             startingTime: singleJobStartingTime,
             endingTime: singleJobEndingTime,
             priority: singleJobPriority,
-            id: Math.floor(Math.random() * 1000),
+            id: uuidv4(),
             detail: singleJobDetail,
             isDone: false
         };
