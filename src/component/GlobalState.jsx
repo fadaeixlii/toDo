@@ -111,9 +111,7 @@ const GlobalState = (props) => {
                 handleAddJob: handleAddJob
             }}
         >
-
-
-            {props.childeren}
+            {props.children}
         </AppContex.Provider>
     );
 }

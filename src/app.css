@@ -10,7 +10,10 @@ body {
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: #c9c9c9;
+  /* background-color: #c9c9c9; */
+  background-image: url('style/bg2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +23,8 @@ body {
   height: 90%;
   border-radius: 2em;
   padding: 1em;
-  box-shadow: 0px 0px 10px #000;
-  background-color: #fdf2f2;
+  background-color: rgba(255, 255, 255, 0.226);
+  backdrop-filter: blur(6px);
 }
 .container .wrapper .app {
   width: 50%;

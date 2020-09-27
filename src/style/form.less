@@ -157,11 +157,13 @@ form {
   }
   
   input[type="submit"]:focus {
-    background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+    // background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+    background-color: #fd633d;
   }
   
   input[type="submit"]:hover {
-    background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+    // background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+    background-color: #ff7c5c;
   }
   
   input[type="submit"]:active {
@@ -272,4 +274,32 @@ input[type=range] {
       /*Edge starts the margin from the thumb, not the track as other browsers do*/
     }
   }
+
+
+  //color input range
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      // width: 80px;
+      -webkit-appearance: none;
+      background-color: #9a905d;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      // height: 10px;
+      -webkit-appearance: none;
+      color: #FFFFFF;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      // width: 10px;
+      -webkit-appearance: none;
+      // height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -180px 0 0 180px #ffffff;
+    }
+
+}
   

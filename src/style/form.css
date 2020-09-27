@@ -136,10 +136,10 @@ input[type="submit"]:focus {
   outline-offset: 2px;
 }
 input[type="submit"]:focus {
-  background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+  background-color: #fd633d;
 }
 input[type="submit"]:hover {
-  background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+  background-color: #ff7c5c;
 }
 input[type="submit"]:active {
   background: #fc977e;
@@ -243,5 +243,23 @@ input[type=range]:focus::-ms-fill-upper {
   input[type=range] {
     margin: 0;
     /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type='range'] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #9a905d;
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    color: #FFFFFF;
+    margin-top: -1px;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -180px 0 0 180px #ffffff;
   }
 }
