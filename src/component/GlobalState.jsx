@@ -17,7 +17,7 @@ const GlobalState = (props) => {
     const [singleJobStartingTime, SetSingleJobStartingTime] = useState(0);
     const [singleJobEndingTime, SetSingleJobEndingTime] = useState(0);
     const [singleJobDetail, SetSingleJobDetail] = useState("");
-    const [singleJobPriority, SetSingleJobPriority] = useState(1);
+    const [singleJobPriority, SetSingleJobPriority] = useState(3);
 
 
 

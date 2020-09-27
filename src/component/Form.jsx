@@ -20,6 +20,7 @@ const FormAddJob = () => {
                             placeholder="نام کار" tabindex="1" required
                             onChange={context.addChangeName}
                             value={context.singleJobName}
+                            autoComplete="off"
                         />
                         <span className="required">نام</span>
                     </label>
@@ -31,6 +32,7 @@ const FormAddJob = () => {
                             placeholder="ساعت شروع" tabindex="1" required
                             onChange={context.addChangeStartingTime}
                             value={context.singleJobStartingTime}
+                            min="0" max="24"
                         />
                         <span className="required">ساعت شروع</span>
                     </label>
@@ -42,6 +44,7 @@ const FormAddJob = () => {
                             placeholder="ساعت پایان" tabindex="1" required
                             onChange={context.addChangeEndingTime}
                             value={context.singleJobEndingTime}
+                            min="0" max="24"
                         />
                         <span className="required">ساعت پایان</span>
                     </label>
@@ -66,6 +69,7 @@ const FormAddJob = () => {
                             placeholder="توضیحات" tabindex="2" required
                             onChange={context.addChangeDetail}
                             value={context.singleJobDetail}
+                            autoComplete="off"
                         />
                         <span className="required">توضیحات</span>
                     </label>
