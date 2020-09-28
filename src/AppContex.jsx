@@ -6,6 +6,13 @@ const AppContex=createContext({
     singleJobEndingTime:0,
     singleJobDetail:'',
     singleJobPriority:'',
+
+    showForm:true,
+    jobEditId:0,
+    setShowForm:()=>{},
+    setJobEditId:()=>{},
+    
+
     handleDeleteJob:()=>{},
     addChangeName:()=>{},
     addChangeDetail:()=>{},

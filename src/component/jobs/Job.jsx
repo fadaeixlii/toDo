@@ -30,9 +30,9 @@ class Job extends Component {
                 <div className={isDoneBGC} ></div>
                 <div className="job-info">
 
-                    <p>ساعت انجام:<br/>{`${this.props.startingTime}-${this.props.endingTime}`}</p>
+                    <p>ساعت انجام:<br />{`${this.props.startingTime}-${this.props.endingTime}`}</p>
                     <h5 about={this.props.detail}>{this.props.detail}
-                    {/* <div className="aboutforText">{this.props.detail}</div> */}
+                        {/* <div className="aboutforText">{this.props.detail}</div> */}
                     </h5>
                 </div>
                 <div className="job-preview">
@@ -46,9 +46,11 @@ class Job extends Component {
                             this.context.handleDoneJob(this.props.id);
                             this.setState({ disableCheckBtn: !this.state.disableCheckBtn })
                         }} disabled={this.state.disableCheckBtn} />
-                    <button className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn" />
+                    <button className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn"
+                        onClick={() => {this.context.setShowForm(false); this.context.setJobEditId(this.props.id)}}
+                    />
                 </div>
-                
+
             </div>
 
         );

@@ -6,6 +6,7 @@ import FormAddJob from './component/Form';
 import "./app.css";
 import './bootstrap-temp.css';
 import 'react-toastify/dist/ReactToastify.css';
+import EditForm from './component/EditForm';
 
 const App = () => {
 
@@ -30,7 +31,12 @@ const App = () => {
             {/* <NotHaveJob/> */}
           </div>
           <div className='app'>
-            <FormAddJob />
+            {
+              context.showForm ? (<FormAddJob/>) : (
+              <EditForm id={context.jobEditId} />
+               )
+            }
+            {/* <FormAddJob /> */}
           </div>
         </div>
       </div>

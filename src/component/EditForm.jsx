@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import AppContex from './../AppContex';
-const EditForm = ({ name, startingTime, endingTime, priority, detail, id }) => {
+const EditForm = ({ id }) => {
     const context = useContext(AppContex);
-
+    const editJob=context.jobs.findIndex(job=>job.id===id);
+    debugger;
+    const {name, startingTime, endingTime, priority, detail}=context.jobs[editJob];
 
     return (
         <div className="formContainer">

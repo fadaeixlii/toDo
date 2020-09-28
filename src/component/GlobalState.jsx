@@ -25,6 +25,8 @@ const GlobalState = (props) => {
     const [editJobDetail, setEditJobDetail] = useState("");
     const [editJobPriority, setEditJobPriority] = useState(3);
 
+    const [showForm,setShowForm]=useState(true);
+    const [jobEditId,setJobEditId]=useState(0);
 
     const notify = () => toast.error('شخص با موفقیت حذف شد', {
         position: "bottom-right",
@@ -153,13 +155,21 @@ const GlobalState = (props) => {
                 singleJobStartingTime: singleJobStartingTime,
                 singleJobEndingTime: singleJobEndingTime,
                 singleJobPriority, singleJobPriority,
+
+                showForm:showForm,
+                jobEditId:jobEditId,
+                setShowForm:setShowForm,
+                setJobEditId:setJobEditId,
+
                 handleDeleteJob: handleDeleteJob,
+
                 addChangeName: addChangeName,
                 addChangeDetail: addChangeDetail,
                 addChangeStartingTime: addChangeStartingTime,
                 addChangeEndingTime: addChangeEndingTime,
                 addChangePriority: addChangePriority,
                 handleAddJob: handleAddJob,
+
                 handleDoneJob:handleDoneJob,
             
                 handleEditName:handleEditName,
