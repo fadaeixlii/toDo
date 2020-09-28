@@ -70,6 +70,13 @@ body {
   margin: 1em 1em;
   position: relative;
 }
+.job .isDone {
+  width: 2%;
+  height: 100%;
+  float: right;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
 .job h5 {
   opacity: 0.6;
   margin: 0;
@@ -80,7 +87,7 @@ body {
   overflow: hidden;
 }
 .job-preview {
-  width: 50%;
+  width: 45%;
   float: left;
   padding: 1em;
   border-top-left-radius: 1em;

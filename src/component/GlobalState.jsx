@@ -6,10 +6,10 @@ const GlobalState = (props) => {
 
     const [jobs, setjobs] = useState(
         [
-            { name: 'خواندن کتاب', startingTime: 10, endingTime: 12, priority: 3, itsDone: false, detail: 'خوتندن هر روز مقداری از یک کتاب', id: 1 },
-            { name: 'یادگیری روزانه', startingTime: 13, endingTime: 16, priority: 2, itsDone: false, detail: 'یادگیری روزانه در مبحث  کامپیوتر', id: 2 },
-            { name: 'انجام کار های خونه', startingTime: 8, endingTime: 10, priority: 1, itsDone: false, detail: 'کمک کردن در کار های خانه', id: 3 },
-            { name: 'درس', startingTime: 18, endingTime: 20, priority: 4, itsDone: false, detail: 'انجام درس های لازم برای فردا', id: 4 },
+            { name: 'خواندن کتاب', startingTime: 10, endingTime: 12, priority: 3, isDone: false, detail: 'خوتندن هر روز مقداری از یک کتاب', id: 1 },
+            { name: 'یادگیری روزانه', startingTime: 13, endingTime: 16, priority: 2, isDone: false, detail: 'یادگیری روزانه در مبحث  کامپیوتر', id: 2 },
+            { name: 'انجام کار های خونه', startingTime: 8, endingTime: 10, priority: 1, isDone: false, detail: 'کمک کردن در کار های خانه', id: 3 },
+            { name: 'درس', startingTime: 18, endingTime: 20, priority: 4, isDone: false, detail: 'انجام درس های لازم برای فردا', id: 4 },
         ]
     );
     // const [showJobs, setShowJobs] = useState(false);
@@ -91,6 +91,12 @@ const GlobalState = (props) => {
     const addChangePriority = (event) => {
         SetSingleJobPriority(event.target.value);
     }
+    const handleDoneJob=(id)=>{
+        let jobstemp=[...jobs];
+        let index=jobstemp.findIndex(job=>job.id===id);
+        jobstemp[index].isDone=true;
+        setjobs(jobstemp);
+    }
 
 
     return (
@@ -108,7 +114,8 @@ const GlobalState = (props) => {
                 addChangeStartingTime: addChangeStartingTime,
                 addChangeEndingTime: addChangeEndingTime,
                 addChangePriority: addChangePriority,
-                handleAddJob: handleAddJob
+                handleAddJob: handleAddJob,
+                handleDoneJob:handleDoneJob
             }}
         >
             {props.children}

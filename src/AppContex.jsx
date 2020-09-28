@@ -12,7 +12,8 @@ const AppContex=createContext({
     addChangeStartingTime:()=>{},
     addChangeEndingTime:()=>{},
     addChangePriority:()=>{},
-    handleAddJob:()=>{}
+    handleAddJob:()=>{},
+    handleDoneJob:()=>{}
 
 })
 export default AppContex;
