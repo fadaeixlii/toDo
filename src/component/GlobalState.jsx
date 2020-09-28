@@ -19,6 +19,11 @@ const GlobalState = (props) => {
     const [singleJobDetail, SetSingleJobDetail] = useState("");
     const [singleJobPriority, SetSingleJobPriority] = useState(3);
 
+    const [editJobName, setEditJobName] = useState("");
+    const [editJobStartingTime, setEditJobStartingTime] = useState(0);
+    const [editJobEndingTime, setEditJobEndingTime] = useState(0);
+    const [editJobDetail, setEditJobDetail] = useState("");
+    const [editJobPriority, setEditJobPriority] = useState(3);
 
 
     const notify = () => toast.error('شخص با موفقیت حذف شد', {
@@ -70,10 +75,7 @@ const GlobalState = (props) => {
 
     }
     const addChangeName = (event) => {
-        // SetSingleJobName("event.target.value");
-
         SetSingleJobName(event.target.value);
-        // console.log(singleJobName);
     }
 
     const addChangeDetail = (event) => {
@@ -88,9 +90,11 @@ const GlobalState = (props) => {
     const addChangeEndingTime = (event) => {
         SetSingleJobEndingTime(event.target.value);
     }
+
     const addChangePriority = (event) => {
         SetSingleJobPriority(event.target.value);
     }
+
     const handleDoneJob=(id)=>{
         let jobstemp=[...jobs];
         let index=jobstemp.findIndex(job=>job.id===id);
@@ -98,6 +102,47 @@ const GlobalState = (props) => {
         setjobs(jobstemp);
     }
 
+    const handleEditName=(event)=>{
+        setEditJobName(event.target.value);
+    }
+
+    const handleEditStartingTime=(event)=>{
+        setEditJobStartingTime(event.target.value);
+    }
+    
+    const handleEditEdingTime=(event)=>{
+        setEditJobEndingTime(event.target.value);
+    }
+    
+    const handleEditDetail=(event)=>{
+        setEditJobDetail(event.target.value);
+    }
+
+    
+    const handleEditPriority=(event)=>{
+        setEditJobPriority(event.target.value);
+    }
+
+    const handleEditJob = (id) => {
+        let jobsTemp = [...jobs];
+        let index=jobsTemp.findIndex(job=>job.id===id);
+
+        jobsTemp[index].detail=editJobDetail;
+        jobsTemp[index].name=editJobName;
+        jobsTemp[index].startingTime=editJobStartingTime;
+        jobsTemp[index].endingTime=editJobEndingTime;
+        jobsTemp[index].priority=editJobPriority;
+
+
+        setEditJobPriority(1);
+        setEditJobDetail('');
+        setEditJobEndingTime(0);
+        setEditJobName('');
+        setEditJobStartingTime(0);
+        // jobsTemp.push(newjob);
+        setjobs(jobsTemp);
+        // notify2();
+    }
 
     return (
         <AppContex.Provider
@@ -115,7 +160,14 @@ const GlobalState = (props) => {
                 addChangeEndingTime: addChangeEndingTime,
                 addChangePriority: addChangePriority,
                 handleAddJob: handleAddJob,
-                handleDoneJob:handleDoneJob
+                handleDoneJob:handleDoneJob,
+            
+                handleEditName:handleEditName,
+                handleEditStartingTime:handleEditStartingTime,
+                handleEditEdingTime:handleEditEdingTime,
+                handleEditDetail:handleEditDetail,
+                handleEditPriority:handleEditPriority,
+                handleEditJob:handleEditJob
             }}
         >
             {props.children}

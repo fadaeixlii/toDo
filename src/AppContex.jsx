@@ -13,7 +13,14 @@ const AppContex=createContext({
     addChangeEndingTime:()=>{},
     addChangePriority:()=>{},
     handleAddJob:()=>{},
-    handleDoneJob:()=>{}
+    handleDoneJob:()=>{},
+
+    handleEditName:()=>{},
+    handleEditStartingTime:()=>{} ,
+    handleEditEdingTime:()=>{} ,
+    handleEditDetail:()=>{} ,
+    handleEditPriority:()=>{} ,
+    handleEditJob:()=>{} 
 
 })
 export default AppContex;
