@@ -28,11 +28,11 @@ const FormAddJob = () => {
 
                 <div>
                     <label className="label-email">
-                        <input type="number" className="text" name="email"
+                        <input type="time" className="text" name="email"
                             placeholder="ساعت شروع" tabindex="1" required
                             onChange={context.addChangeStartingTime}
                             value={context.singleJobStartingTime}
-                            min="0" max="24"
+                            
                         />
                         <span className="required">ساعت شروع</span>
                     </label>
@@ -40,12 +40,12 @@ const FormAddJob = () => {
 
                 <div>
                     <label className="label-email">
-                        <input type="number" className="text" name="email"
+                        <input type="time" className="text" name="email"
                             placeholder="ساعت پایان" tabindex="1" required
                             onChange={context.addChangeEndingTime}
                             value={context.singleJobEndingTime}
-                            min="0" max="24"
                         />
+                       
                         <span className="required">ساعت پایان</span>
                     </label>
                 </div>

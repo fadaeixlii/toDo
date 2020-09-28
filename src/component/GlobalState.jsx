@@ -1,4 +1,4 @@
-import React,{useState,createRef} from 'react'
+import React,{useState} from 'react'
 import AppContex from '../AppContex';
 import {toast} from "react-toastify";
 import { v4 as uuidv4 } from 'uuid'
@@ -6,10 +6,10 @@ const GlobalState = (props) => {
 
     const [jobs, setjobs] = useState(
         [
-            { name: 'خواندن کتاب', startingTime: 10, endingTime: 12, priority: 3, isDone: false, detail: 'خوتندن هر روز مقداری از یک کتاب', id: 1 },
-            { name: 'یادگیری روزانه', startingTime: 13, endingTime: 16, priority: 2, isDone: false, detail: 'یادگیری روزانه در مبحث  کامپیوتر', id: 2 },
-            { name: 'انجام کار های خونه', startingTime: 8, endingTime: 10, priority: 1, isDone: false, detail: 'کمک کردن در کار های خانه', id: 3 },
-            { name: 'درس', startingTime: 18, endingTime: 20, priority: 4, isDone: false, detail: 'انجام درس های لازم برای فردا', id: 4 },
+            { name: 'خواندن کتاب', startingTime: "10:00", endingTime: "12:00", priority: 3, isDone: false, detail: 'خوتندن هر روز مقداری از یک کتاب', id: 1 },
+            { name: 'یادگیری روزانه', startingTime: "13:00", endingTime: "16:00", priority: 2, isDone: false, detail: 'یادگیری روزانه در مبحث  کامپیوتر', id: 2 },
+            { name: 'انجام کار های خونه', startingTime: "8:00", endingTime: "10:00", priority: 1, isDone: false, detail: 'کمک کردن در کار های خانه', id: 3 },
+            { name: 'درس', startingTime: "18:00", endingTime: "20:00", priority: 4, isDone: false, detail: 'انجام درس های لازم برای فردا', id: 4 },
         ]
     );
     // const [showJobs, setShowJobs] = useState(false);
@@ -81,6 +81,7 @@ const GlobalState = (props) => {
     }
 
     const addChangeStartingTime = (event) => {
+        
         SetSingleJobStartingTime(event.target.value);
     }
 
