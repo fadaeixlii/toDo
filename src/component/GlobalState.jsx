@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,createRef} from 'react'
 import AppContex from '../AppContex';
 import {toast} from "react-toastify";
 import { v4 as uuidv4 } from 'uuid'
@@ -18,7 +18,6 @@ const GlobalState = (props) => {
     const [singleJobEndingTime, SetSingleJobEndingTime] = useState(0);
     const [singleJobDetail, SetSingleJobDetail] = useState("");
     const [singleJobPriority, SetSingleJobPriority] = useState(3);
-
 
 
 
