@@ -65,11 +65,12 @@ const FormAddJob = () => {
 
                 <div>
                     <label className="label-password">
-                        <input type="text" className="text" name="password"
+                        <textarea type="text" className="text" name="password"
                             placeholder="توضیحات" tabindex="2" required
                             onChange={context.addChangeDetail}
                             value={context.singleJobDetail}
                             autoComplete="off"
+                            
                         />
                         <span className="required">توضیحات</span>
                     </label>

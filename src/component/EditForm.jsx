@@ -63,11 +63,12 @@ const EditForm = ({ id }) => {
 
                 <div>
                     <label className="label-password">
-                        <input type="text" className="text" name="password"
+                        <textarea type="text" className="text" name="password"
                             placeholder="توضیحات" tabindex="2" required
                             onChange={context.handleEditDetail}
                             value={context.editJobDetail}
                             autoComplete="off"
+                            rows="2"
                         />
                         <span className="required">توضیحات</span>
                     </label>

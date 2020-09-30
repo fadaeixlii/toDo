@@ -7,8 +7,18 @@
     font-size: 16px;
     height: 100%;
     justify-content: center;
+    flex-direction: column;
     margin: 0;
     padding: 0;
+    width: 100%;
+    overflow:scroll;
+    overflow-x: hidden;
+    
+}
+.formContainer::-webkit-scrollbar {
+  height: 4px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 4px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
 }
 form {
     --background: white;
@@ -107,17 +117,22 @@ form {
   
   
   label input.text:focus,
-  label input.text:active {
+  label input.text:active,
+  label textarea.text:focus,
+  label textarea.text:active {
     border-color:  #fc977e;
     box-shadow: 0  0 1px  #fc977e;
   }
   
   input.text:focus + span,
-  input.text:active + span {
+  input.text:active + span,
+  textarea.text:focus + span,
+  textarea.text:active + span {
     color:  #fc977e;
   }
   
-  input {
+  input,textarea {
+    width: 100%;
     border-bottom: 2px solid var(--border);
     border-top: none;
     border-left: none;
@@ -130,12 +145,13 @@ form {
     margin-top: 0.25rem;
     order: 2;
     padding: 0.25rem 0.5rem;
-    width: 15rem;
     transition: all 0.25s;
   }
-  input.text{
+  input.text
+  textarea.text{
       background-color: transparent;
   }
+  
   
   input[type="submit"] {
     color: hsl(var(--bgColorH), var(--bgColorS), var(--bgColorL));
