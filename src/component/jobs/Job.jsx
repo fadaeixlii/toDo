@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 class Job extends Component {
     state = {
         disableCheckBtn: false,
-        jobContainerClass:"job",
+        jobContainerClass: "job",
     }
-    constructor({ name, startingTime, endingTime, priority, isDone, detail, id }) {
-        super({ name, startingTime, endingTime, priority, isDone, detail, id });
+    constructor({ name, startingTime, endingTime, priority, isDone, detail, id, edit }) {
+        super({ name, startingTime, endingTime, priority, isDone, detail, id, edit });
     }
     static contextType = AppContex;
 
     edit = () => {
         this.context.setShowForm(false);
         this.context.setJobEditId(this.props.id);
-        this.setState({jobContainerClass:"job job-select-edit"});
-
+        // this.setState({ jobContainerClass: "job job-select-edit" });
+        this.context.checkOtherJobOnEdit(this.props.id);
         this.context.setEditJobStartingTime(this.props.startingTime);
         this.context.setEditJobEndingTime(this.props.endingTime);
         this.context.setEditJobName(this.props.name);
@@ -23,12 +23,23 @@ class Job extends Component {
         this.context.setEditJobDetail(this.props.detail);
     };
 
-    componentWillReceiveProps(nextProps){
-        if(this.props.name!==nextProps.name || this.props.detail!==nextProps.detail){
-            this.setState({jobContainerClass:"job"});
-
-        }
+    componentWillReceiveProps(nextProps) {
+        // debugger;
+        if (nextProps.edit === false)
+            this.setState({ jobContainerClass: "job" });
+        else
+            this.setState({ jobContainerClass: "job job-select-edit" });
     }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     debugger;
+    //     if (nextProps.edit === false)
+    //         this.setState({ jobContainerClass: "job" });
+    //     else
+    //         this.setState({ jobContainerClass: "job job-select-edit" });
+
+
+    //     return true;
+    // }
 
     render() {
         let badgePriorityClasses = "badge badge-pill";
@@ -67,7 +78,7 @@ class Job extends Component {
                             this.setState({ disableCheckBtn: !this.state.disableCheckBtn })
                         }} disabled={this.state.disableCheckBtn} />
                     <button className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn"
-                        onClick={this.edit }
+                        onClick={this.edit}
                     />
                 </div>
 

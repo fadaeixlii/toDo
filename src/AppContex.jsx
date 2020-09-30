@@ -12,6 +12,8 @@ const AppContex=createContext({
     setShowForm:()=>{},
     setJobEditId:()=>{},
 
+    checkOtherJobOnEdit:()=>{},
+
     editJobName:'',
     editJobDetail:'',
     editJobEndingTime:"00:00",

@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import AppContex from './../AppContex';
 const EditForm = ({ id }) => {
     const context = useContext(AppContex);
-    const editJob=context.jobs.findIndex(job=>job.id===id);
-    debugger;
-    const {name, startingTime, endingTime, priority, detail}=context.jobs[editJob];
+    
 
     return (
         <div className="formContainer">
@@ -31,6 +29,7 @@ const EditForm = ({ id }) => {
                     <label className="label-email">
                         <input type="time" className="text" name="email"
                             required
+                            value={context.editJobStartingTime}
                             onChange={context.handleEditStartingTime}
                         />
                         <span className="required">{`ساعت شروع قبلی ${context.editJobStartingTime}`}</span>
@@ -41,6 +40,7 @@ const EditForm = ({ id }) => {
                     <label className="label-email">
                         <input type="time" className="text" name="email"
                             required
+                            value={context.editJobEndingTime}
                             onChange={context.handleEditEdingTime}
                         />
 
