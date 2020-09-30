@@ -18,9 +18,9 @@ const EditForm = ({ id }) => {
                 <div>
                     <label className="label-email">
                         <input type="text" className="text" name="email"
-                            placeholder={name} tabindex="1" required
+                            placeholder={context.editJobName} tabindex="1" required
                             onChange={context.handleEditName}
-                            value={name}
+                            value={context.editJobName}
                             autoComplete="off"
                         />
                         <span className="required">نام</span>
@@ -33,7 +33,7 @@ const EditForm = ({ id }) => {
                             required
                             onChange={context.handleEditStartingTime}
                         />
-                        <span className="required">{`ساعت شروع قبلی ${startingTime}`}</span>
+                        <span className="required">{`ساعت شروع قبلی ${context.editJobStartingTime}`}</span>
                     </label>
                 </div>
 
@@ -44,7 +44,7 @@ const EditForm = ({ id }) => {
                             onChange={context.handleEditEdingTime}
                         />
 
-                        <span className="required">{`ساعت پایان قبلی ${endingTime}`}</span>
+                        <span className="required">{`ساعت پایان قبلی ${context.editJobEndingTime}`}</span>
                     </label>
                 </div>
 
@@ -53,7 +53,7 @@ const EditForm = ({ id }) => {
                         <input type="range" id="vol" name="vol"
                             min="1" max="5" step="1"
                             onChange={context.handleEditPriority}
-                            value={priority}
+                            value={context.editJobPriority}
                         />
 
                         <span className="required">الویت</span>
@@ -66,7 +66,7 @@ const EditForm = ({ id }) => {
                         <input type="text" className="text" name="password"
                             placeholder="توضیحات" tabindex="2" required
                             onChange={context.handleEditDetail}
-                            value={detail}
+                            value={context.editJobDetail}
                             autoComplete="off"
                         />
                         <span className="required">توضیحات</span>

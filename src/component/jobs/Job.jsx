@@ -3,12 +3,32 @@ import AppContex from './../../AppContex';
 import PropTypes from 'prop-types';
 class Job extends Component {
     state = {
-        disableCheckBtn: false
+        disableCheckBtn: false,
+        jobContainerClass:"job",
     }
     constructor({ name, startingTime, endingTime, priority, isDone, detail, id }) {
         super({ name, startingTime, endingTime, priority, isDone, detail, id });
     }
     static contextType = AppContex;
+
+    edit = () => {
+        this.context.setShowForm(false);
+        this.context.setJobEditId(this.props.id);
+        this.setState({jobContainerClass:"job job-select-edit"});
+
+        this.context.setEditJobStartingTime(this.props.startingTime);
+        this.context.setEditJobEndingTime(this.props.endingTime);
+        this.context.setEditJobName(this.props.name);
+        this.context.setEditJobPriority(this.props.priority);
+        this.context.setEditJobDetail(this.props.detail);
+    };
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.name!==nextProps.name || this.props.detail!==nextProps.detail){
+            this.setState({jobContainerClass:"job"});
+
+        }
+    }
 
     render() {
         let badgePriorityClasses = "badge badge-pill";
@@ -26,7 +46,7 @@ class Job extends Component {
 
         return (
 
-            <div className="job">
+            <div className={this.state.jobContainerClass}>
                 <div className={isDoneBGC} ></div>
                 <div className="job-info">
 
@@ -47,7 +67,7 @@ class Job extends Component {
                             this.setState({ disableCheckBtn: !this.state.disableCheckBtn })
                         }} disabled={this.state.disableCheckBtn} />
                     <button className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn"
-                        onClick={() => {this.context.setShowForm(false); this.context.setJobEditId(this.props.id)}}
+                        onClick={this.edit }
                     />
                 </div>
 

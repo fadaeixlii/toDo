@@ -11,6 +11,17 @@ const AppContex=createContext({
     jobEditId:0,
     setShowForm:()=>{},
     setJobEditId:()=>{},
+
+    editJobName:'',
+    editJobDetail:'',
+    editJobEndingTime:"00:00",
+    editJobStartingTime:"00:00",
+    editJobPriority:0,
+    setEditJobName:()=>{},
+    setEditJobPriority:()=>{},
+    setEditJobDetail:()=>{},
+    setEditJobEndingTime:()=>{},
+    setEditJobStartingTime:()=>{},
     
 
     handleDeleteJob:()=>{},

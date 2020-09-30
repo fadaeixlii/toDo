@@ -14,8 +14,8 @@ const GlobalState = (props) => {
     );
     // const [showJobs, setShowJobs] = useState(false);
     const [singleJobName, SetSingleJobName] = useState("");
-    const [singleJobStartingTime, SetSingleJobStartingTime] = useState(0);
-    const [singleJobEndingTime, SetSingleJobEndingTime] = useState(0);
+    const [singleJobStartingTime, SetSingleJobStartingTime] = useState("00:00");
+    const [singleJobEndingTime, SetSingleJobEndingTime] = useState("00:00");
     const [singleJobDetail, SetSingleJobDetail] = useState("");
     const [singleJobPriority, SetSingleJobPriority] = useState(3);
 
@@ -60,9 +60,9 @@ const GlobalState = (props) => {
         };
         SetSingleJobPriority(1);
         SetSingleJobDetail('');
-        SetSingleJobEndingTime(0);
+        SetSingleJobEndingTime("00:00");
         SetSingleJobName('');
-        SetSingleJobStartingTime(0);
+        SetSingleJobStartingTime("00:00");
         jobsTemp.push(newjob);
         setjobs(jobsTemp);
         notify2();
@@ -155,6 +155,18 @@ const GlobalState = (props) => {
                 singleJobStartingTime: singleJobStartingTime,
                 singleJobEndingTime: singleJobEndingTime,
                 singleJobPriority, singleJobPriority,
+
+                editJobName:editJobName,
+                editJobDetail:editJobDetail,
+                editJobEndingTime:editJobEndingTime,
+                editJobStartingTime:editJobStartingTime,
+                editJobPriority:editJobPriority,
+                setEditJobName:setEditJobName,
+                setEditJobPriority:setEditJobPriority,
+                setEditJobDetail:setEditJobDetail,
+                setEditJobEndingTime:setEditJobEndingTime,
+                setEditJobStartingTime:setEditJobStartingTime,
+
 
                 showForm:showForm,
                 jobEditId:jobEditId,
