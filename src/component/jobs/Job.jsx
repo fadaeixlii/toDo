@@ -46,16 +46,16 @@ const Job = ({
     dispatch(setJobDetailEdit(detail));
   };
 
-  const prevAmount = usePrevious({ edit });
-  useEffect(() => {
-    if (prevAmount.edit === false) {
-      setjobContainerClass("job");
+  // const prevAmount = usePrevious({ edit });
+  // useEffect(() => {
+  //   if (prevAmount.edit === false) {
+  //     setjobContainerClass("job");
 
-      // process here
-    } else {
-      setjobContainerClass("job  job-select-edit");
-    }
-  }, [edit]);
+  //     // process here
+  //   } else {
+  //     setjobContainerClass("job  job-select-edit");
+  //   }
+  // }, [edit]);
 
   let badgePriorityClasses = "badge badge-pill";
   if (priority === 1) badgePriorityClasses += " badge-secondary";

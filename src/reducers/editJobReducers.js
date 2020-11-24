@@ -1,10 +1,10 @@
 export const editJobNameRedcer = (state = "", action) => {
     switch (action.type) {
-        case "EDIT":
+        case "EDIT_NAME":
             return action.payload;
-        case "CLEAR":
+        case "CLEAR_NAME":
             return action.payload;
-        case "SET":
+        case "SET_NAME":
             return action.payload;
         default:
             return state;
@@ -13,11 +13,11 @@ export const editJobNameRedcer = (state = "", action) => {
 
 export const editJobStartingTime = (state = "00:00", action) => {
     switch (action.type) {
-        case "EDIT":
+        case "EDIT_STARTING":
             return action.payload;
-        case "CLEAR":
+        case "CLEAR_STARTING":
             return action.payload;
-        case "SET":
+        case "SET_STARTING":
             return action.payload;
         default:
             return state;
@@ -26,12 +26,12 @@ export const editJobStartingTime = (state = "00:00", action) => {
 
 export const editJobEndingTime = (state = "00:00", action) => {
     switch (action.type) {
-        case "EDIT":
+        case "EDIT_ENDING":
             return action.payload;
-        case "CLEAR":
+        case "CLEAR_ENDING":
             return action.payload;
 
-        case "SET":
+        case "SET_ENDING":
             return action.payload;
         default:
             return state;
@@ -40,11 +40,11 @@ export const editJobEndingTime = (state = "00:00", action) => {
 
 export const editJobDetail = (state = "", action) => {
     switch (action.type) {
-        case "EDIT":
+        case "EDIT_DETAIL":
             return action.payload;
-        case "CLEAR":
+        case "CLEAR_DETAIL":
             return action.payload;
-        case "SET":
+        case "SET_DETAIL":
             return action.payload;
         default:
             return state;
@@ -53,11 +53,11 @@ export const editJobDetail = (state = "", action) => {
 
 export const editJobPriority = (state = 0, action) => {
     switch (action.type) {
-        case "EDIT":
+        case "EDIT_PRIORITY":
             return action.payload;
-        case "CLEAR":
+        case "CLEAR_PRIORITY":
             return action.payload;
-        case "SET":
+        case "SET_PRIORITY":
             return action.payload;
         default:
             return state;

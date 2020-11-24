@@ -9,7 +9,7 @@ const Jobs = () => {
 
   return (
     <div className="list-of-jobs">
-      {this.context.jobs.map((job) => (
+      {jobs.map((job) => (
         <Job
           name={job.name}
           startingTime={job.startingTime}

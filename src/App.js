@@ -26,7 +26,7 @@ const App = () => {
         )}
       </div>
       <div className="app">
-        {showForm ? <FormAddJob /> : <EditForm id={EditId} />}
+        {showForm ?  <EditForm id={EditId} />:<FormAddJob />}
       </div>
     </MainLayout>
   );
