@@ -28,26 +28,10 @@ const GlobalState = (props) => {
     const [showForm,setShowForm]=useState(true);
     const [jobEditId,setJobEditId]=useState(0);
 
-    const notify = () => toast.error('شخص با موفقیت حذف شد', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-    const notify2 = () => toast.info('کار جدید اضافه شد', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
+    
 
     const handleAddJob = () => {
+        //
         let jobsTemp = [...jobs];
         let newjob = {
             name: singleJobName,
@@ -66,7 +50,7 @@ const GlobalState = (props) => {
         SetSingleJobStartingTime("00:00");
         jobsTemp.push(newjob);
         setjobs(jobsTemp);
-        notify2();
+      
     }
 
     const handleDeleteJob = (id) => {

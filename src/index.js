@@ -1,10 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom'
 import App from './App';
-import GlobalState from './component/GlobalState';
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 render(
-< GlobalState >
-    <App />
-</GlobalState>
+
+<Provider store={store}>
+    <App/>
+</Provider>
+
     , document.getElementById("root"));
