@@ -1,100 +1,124 @@
-import React, { Component } from 'react'
-import AppContex from './../../AppContex';
-import PropTypes from 'prop-types';
-class Job extends Component {
-    state = {
-        disableCheckBtn: false,
-        jobContainerClass: "job",
-    }
-    constructor({ name, startingTime, endingTime, priority, isDone, detail, id, edit }) {
-        super({ name, startingTime, endingTime, priority, isDone, detail, id, edit });
-    }
-    static contextType = AppContex;
+import React, { useEffect, usePrevious } from "react";
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setShowForm } from "../../actions/showForm";
+import { setJobEditId } from "./../../actions/jobEditId";
+import {
+  checkOtherJobOnEdit,
+  handleDeletejob,
+  handleDoneJob,
+} from "./../../actions/jobs";
+import {
+  setJobDetailEdit,
+  setJobStartingTimeEdit,
+} from "../../actions/editJob";
+import {
+  setJobEndingTimeEdit,
+  setJobNameEdit,
+  setJobPriorityEdit,
+} from "./../../actions/editJob";
 
-    edit = () => {
-        this.context.setShowForm(false);
-        this.context.setJobEditId(this.props.id);
-        // this.setState({ jobContainerClass: "job job-select-edit" });
-        this.context.checkOtherJobOnEdit(this.props.id);
-        this.context.setEditJobStartingTime(this.props.startingTime);
-        this.context.setEditJobEndingTime(this.props.endingTime);
-        this.context.setEditJobName(this.props.name);
-        this.context.setEditJobPriority(this.props.priority);
-        this.context.setEditJobDetail(this.props.detail);
-    };
+const Job = ({
+  name,
+  startingTime,
+  endingTime,
+  priority,
+  isDone,
+  detail,
+  id,
+  edit,
+}) => {
+  const [disableCheckBtn, setDisableCheckBtn] = useState(false);
+  const [jobContainerClass, setjobContainerClass] = useState("job");
 
-    componentWillReceiveProps(nextProps) {
-        // debugger;
-        if (nextProps.edit === false)
-            this.setState({ jobContainerClass: "job" });
-        else
-            this.setState({ jobContainerClass: "job job-select-edit" });
-    }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     debugger;
-    //     if (nextProps.edit === false)
-    //         this.setState({ jobContainerClass: "job" });
-    //     else
-    //         this.setState({ jobContainerClass: "job job-select-edit" });
+  const dispatch = useDispatch();
 
+  const editt = () => {
+    dispatch(setShowForm(false));
+    dispatch(setJobEditId(id));
+    // this.setState({ jobContainerClass: "job job-select-edit" });
+    dispatch(checkOtherJobOnEdit(id));
+    dispatch(setJobStartingTimeEdit(startingTime));
+    dispatch(setJobEndingTimeEdit(endingTime));
+    dispatch(setJobNameEdit(name));
+    dispatch(setJobPriorityEdit(priority));
+    dispatch(setJobDetailEdit(detail));
+  };
 
-    //     return true;
-    // }
+  // const prevAmount = usePrevious({ edit });
+  // useEffect(() => {
+  //   if (prevAmount.edit === false) {
+  //     setjobContainerClass("job");
 
-    render() {
-        let badgePriorityClasses = "badge badge-pill";
-        if (this.props.priority === 1) badgePriorityClasses += " badge-secondary";
-        else if (this.props.priority === 2) badgePriorityClasses += " badge-info";
-        else if (this.props.priority === 3) badgePriorityClasses += " badge-primary";
-        else if (this.props.priority === 4) badgePriorityClasses += " badge-warning";
-        else if (this.props.priority === 5) badgePriorityClasses += " badge-danger";
+  //     // process here
+  //   } else {
+  //     setjobContainerClass("job  job-select-edit");
+  //   }
+  // }, [edit]);
 
-        let isDoneBGC = "isDone";
-        if (this.props.isDone === true) isDoneBGC += " bg-success";
-        if (this.props.isDone === false) isDoneBGC += " bg-warning";
+  let badgePriorityClasses = "badge badge-pill";
+  if (priority === 1) badgePriorityClasses += " badge-secondary";
+  else if (priority === 2) badgePriorityClasses += " badge-info";
+  else if (priority === 3) badgePriorityClasses += " badge-primary";
+  else if (priority === 4) badgePriorityClasses += " badge-warning";
+  else if (priority === 5) badgePriorityClasses += " badge-danger";
 
+  let isDoneBGC = "isDone";
+  if (isDone === true) isDoneBGC += " bg-success";
+  if (isDone === false) isDoneBGC += " bg-warning";
 
-
-        return (
-
-            <div className={this.state.jobContainerClass}>
-                <div className={isDoneBGC} ></div>
-                <div className="job-info">
-
-                    <p>ساعت انجام:<br />{`${this.props.startingTime}-${this.props.endingTime}`}</p>
-                    <h5 about={this.props.detail}>{this.props.detail}
-                        {/* <div className="aboutforText">{this.props.detail}</div> */}
-                    </h5>
-                </div>
-                <div className="job-preview">
-                    <h6>وظیفه </h6>
-                    <h3>{this.props.name}</h3>
-                    <p><span className={badgePriorityClasses}>{`الویت انجام ${this.props.priority}`}</span></p>
-                    <button className="btn btn-outline-danger pill fa fa-trash btn-sm delete-btn"
-                        onClick={() => this.context.handleDeleteJob(this.props.id)} />
-                    <button className="btn btn-outline-success pill fa fa-check btn-sm check-btn"
-                        onClick={() => {
-                            this.context.handleDoneJob(this.props.id);
-                            this.setState({ disableCheckBtn: !this.state.disableCheckBtn })
-                        }} disabled={this.state.disableCheckBtn} />
-                    <button className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn"
-                        onClick={this.edit}
-                    />
-                </div>
-
-            </div>
-
-        );
-    }
-}
-Job.propTypes = {
-    name: PropTypes.string,
-    startingTime: PropTypes.number,
-    endingTime: PropTypes.number,
-    priority: PropTypes.number,
-    isDone: PropTypes.bool,
-    detail: PropTypes.string,
-    id: PropTypes.number
-}
+  return (
+    <div className={jobContainerClass}>
+      <div className={isDoneBGC}></div>
+      <div className="job-info">
+        <p>
+          ساعت انجام:
+          <br />
+          {`${startingTime}-${endingTime}`}
+        </p>
+        <h5 about={detail}>
+          {detail}
+          {/* <div className="aboutforText">{detail}</div> */}
+        </h5>
+      </div>
+      <div className="job-preview">
+        <h6>وظیفه </h6>
+        <h3>{name}</h3>
+        <p>
+          <span
+            className={badgePriorityClasses}
+          >{`الویت انجام ${priority}`}</span>
+        </p>
+        <button
+          className="btn btn-outline-danger pill fa fa-trash btn-sm delete-btn"
+          onClick={() => dispatch(handleDeletejob(id))}
+        />
+        <button
+          className="btn btn-outline-success pill fa fa-check btn-sm check-btn"
+          onClick={() => {
+            dispatch(handleDoneJob(id));
+            setDisableCheckBtn(!disableCheckBtn);
+          }}
+          disabled={disableCheckBtn}
+        />
+        <button
+          className="btn btn-outline-primary pill fa fa-gear btn-sm gear-btn"
+          onClick={editt}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Job;
+
+Job.propTypes = {
+  name: PropTypes.string,
+  startingTime: PropTypes.number,
+  endingTime: PropTypes.number,
+  priority: PropTypes.number,
+  isDone: PropTypes.bool,
+  detail: PropTypes.string,
+  id: PropTypes.number,
+};

@@ -1,43 +1,35 @@
-import React, {  useContext } from 'react';
-import AppContex from './AppContex';
-import Jobs from './component/jobs/Jobs';
-import FormAddJob from './component/Form';
-import EditForm from './component/EditForm';
-import MainLayout from './component/layout/MainLayout';
+import React from "react";
 
+import Jobs from "./component/jobs/Jobs";
+import FormAddJob from "./component/Form";
+import EditForm from "./component/EditForm";
+import MainLayout from "./component/layout/MainLayout";
 
 // most be add these import to index.html
 import "./app.css";
-import './bootstrap-temp.css';
-import 'react-toastify/dist/ReactToastify.css';
+import "./bootstrap-temp.css";
+import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const jobs = useSelector((state) => state.jobs);
+  const EditId = useSelector((state) => state.jobEditId);
+  const showForm = useSelector((state) => state.showForm);
 
-  const context = useContext(AppContex);
   return (
-
     <MainLayout>
-      <div className='app'>
-        {
-          context.jobs.length > 0 ? (
-            <Jobs jobs={context.jobs} />
-          ) : (
-              <div className="not-have-job">
-                کاری برای انجام نیست دوست عزیز
-              </div>
-            )
-        }
-
+      <div className="app">
+        {jobs.length > 0 ? (
+          <Jobs />
+        ) : (
+          <div className="not-have-job">کاری برای انجام نیست دوست عزیز</div>
+        )}
       </div>
-      <div className='app'>
-        {
-          context.showForm ? (<FormAddJob />) : (
-            <EditForm id={context.jobEditId} />
-          )
-        }
+      <div className="app">
+        {showForm ?  <EditForm id={EditId} />:<FormAddJob />}
       </div>
     </MainLayout>
   );
-}
+};
 
 export default App;
